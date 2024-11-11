@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+    <link rel="manifest" href="/static/site.webmanifest">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Login - Dream Diary</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="navbar-logo"></div>
+        <div class="navbar-buttons">
+            <a href="/">Home</a>
+            <a href="/login">Login</a>
+            <a href="/signup">Sign Up</a>
+            <a href="/about">About</a>
+        </div>
+    </div>
+
+    <!-- Logo at the Top -->
+    <div style="padding-left:15px;text-align: center; margin-top: 60px;">
+        <img src="/static/logo3.png" alt="Dream Diary Logo" style="max-width: 400px; height: auto;">
+    </div>
+
+    <!-- Login Form -->
+    <div class="login-container" style="margin-top: 60px; text-align: center;"> <!-- Adjusted margin-top -->
+        <h2 style="margin-top:0px; padding-top:0px;">Login to Your Account</h2>
+        <form action="/login" method="post" style="max-width: 400px; margin: auto;">
+            <div class="input-container" style="margin-bottom: 15px;">
+                <label for="email" style="font-family:Franklin Gothic Book, sans-serif;font-weight: bold;">Email:</label>
+                <input type="email" id="email" name="email" required style="font-family:Franklin Gothic Book, sans-serif;width: 100%; padding: 12px; border: 2px solid #B186CB; border-radius: 8px; transition: border-color 0.3s;">
+            </div>
+            <div class="input-container" style="margin-bottom: 15px;">
+                <label for="password" style="font-family: Franklin Gothic Book, sans-serif;font-weight: bold;">Password:</label>
+                <input type="password" id="password" name="password" required style="width: 100%; padding: 12px; border: 2px solid #B186CB; border-radius: 8px; transition: border-color 0.3s;">
+            </div>
+            <button type="submit" class="button2" style="background-color: #B186CB; color: white; padding: 10px 20px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: background-color 0.3s;">
+                Login
+            </button>
+        </form>
+        <p style="margin-top: 20px; font-family: Franklin Gothic Book, sans-serif;">Don't have an account? <a href="/signup" style="color: #B186CB; font-weight: bold;">Sign up here</a></p>
+    </div>
+
+</body>
+</html>
+
