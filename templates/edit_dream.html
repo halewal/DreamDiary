@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+    <link rel="manifest" href="/static/site.webmanifest">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Edit Dream - Dream Diary</title>
+    <style>
+        textarea {
+            resize: none; /* Disable resizing */
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-logo"></div>
+        <div class="navbar-buttons">
+            <a href="/">Home</a>
+            <a href="/login">Login</a>
+            <a href="/signup">Sign Up</a>
+            <a href="/about">About</a>
+        </div>
+    </div>
+    <!-- Logo at the Top -->
+    <div style="padding-left:15px;text-align: center; margin-top: 20px;">
+        <img src="/static/logo3.png" alt="Dream Diary Logo" style="max-width: 400px; height: auto;">
+    </div>
+    <!-- Edit Dream Form -->
+    <div class="edit-container" style="margin-top: 20px; text-align: center;">
+        <h2>Edit Dream</h2>
+        <form action="{{ url_for('edit_dream', dream_id=dream.id) }}" method="post" enctype="multipart/form-data" style="max-width: 400px; margin: auto;">
+            <div class="input-container" style="margin-bottom: 15px;">
+                <label for="title" style="font-weight: bold;">Title:</label>
+                <input type="text" id="title" name="title" value="{{ dream.title }}" required style="width: 100%; padding: 12px; border: 2px solid #B186CB; border-radius: 8px; transition: border-color 0.3s;">
+            </div>
+            <div class="input-container" style="margin-bottom: 15px;">
+                <label for="description" style="font-weight: bold;">Description:</label>
+                <textarea id="description" name="description" required style="width: 100%; padding: 12px; border: 2px solid #B186CB; border-radius: 8px; transition: border-color 0.3s;">{{ dream.description }}</textarea>
+            </div>
+            <div class="input-container" style="margin-bottom: 15px;">
+                <label for="date" style="font-weight: bold;">Date:</label>
+                <input type="date" id="date" name="date" value="{{ dream.date }}" required style="width: 100%; padding: 12px; border: 2px solid #B186CB; border-radius: 8px; transition: border-color 0.3s;">
+            </div>
+            <div class="input-container" style="margin-bottom: 15px;">
+                <label for="image" style="font-weight: bold;">Upload Image:</label>
+                <input type="file" id="image" name="image">
+            </div>
+            <button type="submit" class="button2" style="background-color: #B186CB; color: white; padding: 10px 20px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: background-color 0.3s;">
+                Update Dream
+            </button>
+        </form>
+    </div>
+</body>
+</html>
