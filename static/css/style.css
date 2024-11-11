@@ -1,0 +1,160 @@
+/* Reset margin and padding */
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Navbar styling */
+.navbar {
+    background-color: #B186CB;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0; /* Remove margin */
+    position: fixed; /* Stick to the top */
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width */
+    z-index: 1000; /* Make sure it stays on top of other elements */
+    box-sizing: border-box;
+}
+
+
+
+.navbar a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-family: "Franklin Gothic Book", sans-serif;
+    font-weight: bold;
+    transition-duration: 0.4s;
+}
+
+.navbar a:hover{
+    color: #bbbec4;
+}
+/* General container */
+.container {
+    padding: 20px;
+    margin-top: 20px; /* Move content down to prevent overlap with navbar */
+    display: flex; /* Flexbox for layout */
+}
+
+/* Dream list column on the left */
+.dream-list {
+    width: 50%; /* Half the page */
+    margin-right: 20px; /* Space between dream list and input column */
+}
+
+/* Dream entry box */
+.dream-entry {
+    border: 2px solid #B186CB;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.dream-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.dream-description {
+    margin: 5px 0;
+}
+
+.dream-date {
+    font-style: italic;
+    color: gray;
+}
+
+/* Dream action buttons */
+.dream-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit-button,
+.delete-button {
+    background-color: #B186CB;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+    background-color: #9f60a0;
+}
+
+/* Input form styles */
+.input-container {
+    margin-bottom: 15px;
+    width: 100%; /* Full width */
+}
+
+input[type="text"],
+input[type="date"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #B186CB;
+    border-radius: 8px;
+    transition: border-color 0.3s;
+    resize: none; /* Prevent resizing */
+}
+
+textarea {
+    width: 100%;
+    height: 60px; /* Height of the text area */
+    padding: 12px;
+    border: 2px solid #B186CB;
+    border-radius: 8px;
+    resize: none; /* Prevent resizing */
+    margin-bottom: 15px; /* Margin for spacing */
+}
+
+button {
+    font-family: "Franklin Gothic Book", sans-serif;
+    background-color: #B186CB;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #9f60a0;
+}
+
+h1{
+    font-family: "Franklin Gothic Book", sans-serif;
+    font-weight: bold;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+}
+
+h2{
+    font-family: "Franklin Gothic Book", sans-serif;
+    font-weight: bold:
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+}
+
+/* Fixing the margin/padding of elements to avoid clipping */
+.container input, .container textarea {
+    margin-top: 15px;
+}
+
+/* Ensure the dream list doesn't clip into the navbar */
+.dream-list, .input-container {
+    padding-top: 20px;
+}
