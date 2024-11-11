@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+    <link rel="manifest" href="/static/site.webmanifest">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Diary - Dream Diary</title>
+    <style>
+        .navbar {
+            background-color: #B186CB;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: right;
+        }
+        .navbar a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .container {
+            padding: 20px;
+            margin-top: 20px; /* Move content down */
+            display: flex; /* Use flexbox for layout */
+        }
+        .dream-list {
+            width: 50%; /* Column for the dream entries */
+            margin-right: 20px; /* Space between the two columns */
+        }
+        .dream-entry {
+            border: 2px solid #B186CB;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+        .dream-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 0;
+        }
+        .dream-description {
+            margin: 5px 0;
+        }
+        .dream-date {
+            font-style: italic;
+            color: gray;
+        }
+        .dream-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        .edit-button,
+        .delete-button {
+            background-color: #B186CB;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .edit-button:hover,
+        .delete-button:hover {
+            background-color: #9f60a0;
+        }
+        /* Style for the input form */
+        .input-container {
+            margin-bottom: 15px;
+            width: 100%; /* Full width */
+        }
+        input[type="text"],
+        input[type="date"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #B186CB;
+            border-radius: 8px;
+            transition: border-color 0.3s;
+            resize: none; /* Prevent resizing */
+        }
+        textarea {
+            width: 100%;
+            height: 60px; /* Height of the text area */
+            padding: 12px;
+            border: 2px solid #B186CB;
+            border-radius: 8px;
+            resize: none; /* Prevent resizing */
+            margin-bottom: 15px; /* Margin for spacing */
+        }
+        input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #B186CB;
+            border-radius: 8px;
+            margin-bottom: 15px; /* Margin for spacing */
+        }
+        button {
+            background-color: #B186CB;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #9f60a0;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-buttons">
+            <a href="/">Home</a>
+            <a href="/login">Login</a>
+            <a href="/signup">Sign Up</a>
+            <a href="/about">About</a>
+        </div>
+    </div>
+    <div class="container">
+        <!-- Dream List -->
+        <div class="dream-list">
+            {% for dream in dreams %}
+            <div class="dream-entry">
+                <h3 class="dream-title">{{ dream.title }}</h3>
+                <p class="dream-description">{{ dream.description }}</p>
+                <p class="dream-date">{{ dream.date }}</p>
+                {% if dream.image_filename %}
+                <img src="{{ url_for('static', filename='uploads/' + dream.image_filename) }}" alt="{{ dream.title }}">
+                {% endif %}
+                <div class="dream-actions">
+                    <form action="{{ url_for('edit_dream', dream_id=dream.id) }}" method="get">
+                        <button type="submit" class="edit-button">Edit</button>
+                    </form>
+                    <form action="{{ url_for('delete_dream', dream_id=dream.id) }}" method="post">
+                        <button type="submit" class="delete-button">Delete</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <!-- Input Form -->
+        <div class="input-container" style="margin-top: 0;">
+            <h2>Add New Dream</h2>
+            <form action="/diary" method="post" enctype="multipart/form-data">
+                <div class="input-container">
+                    <label for="title" style="font-weight: bold;">Title:</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                <div class="input-container">
+                    <label for="description" style="font-weight: bold;">Description:</label>
+                    <textarea id="description" name="description" required></textarea>
+                </div>
+                <div class="input-container">
+                    <label for="date" style="font-weight: bold;">Date:</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="input-container">
+                    <label for="image" style="font-weight: bold;">Upload Image:</label>
+                    <input type="file" id="image" name="image">
+                </div>
+                <button type="submit">Add Dream</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
