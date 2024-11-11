@@ -1,0 +1,40 @@
+index.html: <!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+    <title>Dream Diary</title>
+    <head>
+        <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+        <link rel="manifest" href="/static/site.webmanifest">
+        <style>
+            body{
+                background: url('https://images.unsplash.com/photo-1534271057238-c2c170a76672?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHVycGxlJTIwY2xvdWRzfGVufDB8fDB8fHww')
+            }
+        </style>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width-device-width, initial scale-1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+        <div class="navbar">
+            <div class="navbar-logo"></div>
+            <div class="navbar-buttons">
+                <a href="/">Home</a>
+                <a href="/login">Login</a>
+                <a href="/signup">Sign Up</a>
+                <a href="/about">About</a>
+            </div>
+        </div>
+        <h1 style="color:white;padding-top:350px;padding-left:50px;font-size:60px;padding-bottom:0px;">
+            Dream Diary
+        </h1>
+        <h2 style="color:white;padding-left:50px;top:0px;">
+            Dream shit and write it
+        </h2>
+        <a href="/signup">
+            <button class="button button1" style="margin-left: 50px; margin-top: 10px;">Get Started</button>
+        </a>
+    </body>
+
+
+</html>
